@@ -1,18 +1,31 @@
-import Player from './components/Player.jsx';
-import TimerChallenge from './components/TimerChallenge.jsx';
+import Input from './input';
+import React from 'react';
 
-function App() {
+export const userData = {
+  name: '',
+  email: '',
+};
+
+export function App() {
+    const ref = React.useRef();
+    const data = React.useRef();
+  function handleSaveData() {
+    // userData.name = 'TODO: Set to actual entered value';
+    // userData.email = 'TODO: Set to actual entered value';
+    userData.name = ref.current.value;
+    userData.email = data.current.value;
+
+    console.log(userData);
+  }
+
   return (
-    <>
-      <Player />
-      <div id="challenges">
-        <TimerChallenge title="Easy" targetTime={1} />
-        <TimerChallenge title="Not easy" targetTime={5} />
-        <TimerChallenge title="Getting tough" targetTime={10} />
-        <TimerChallenge title="Pros only" targetTime={15} />
-      </div>
-    </>
+    <div id="app">
+      <Input type="text" label="Your Name" ref={ref}/>
+      <Input type="email" label="Your E-Mail" ref={data}/>
+      <p id="actions">
+        <button onClick={handleSaveData}>Save Data</button>
+      </p>
+    </div>
   );
 }
 
-export default App;
