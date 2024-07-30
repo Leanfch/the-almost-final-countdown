@@ -1,18 +1,18 @@
-import Form from "./Form"
+import Player from './components/Player.jsx';
+import TimerChallenge from './components/TimerChallenge.jsx';
 
-// Don't change the name of the 'App'
-// function and keep it a named export
-
-export function App() {
-    const form = React.useRef();
-    function handleRestart() {
-        form.current.clear();
-    }
-
-    return (
-        <div id="app">
-            <button onClick={handleRestart}>Restart</button>
-            <Form ref={form} />
-        </div>
-    )
+function App() {
+  return (
+    <>
+      <Player />
+      <div id="challenges">
+        <TimerChallenge title="Easy" targetTime={1} />
+        <TimerChallenge title="Not easy" targetTime={5} />
+        <TimerChallenge title="Getting tough" targetTime={10} />
+        <TimerChallenge title="Pros only" targetTime={15} />
+      </div>
+    </>
+  );
 }
+
+export default App;
